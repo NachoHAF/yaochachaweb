@@ -64,6 +64,7 @@
         }
 
         .logo {
+            user-select: none; /* 禁止选中内容 */
             width: 120px;
             height: 120px;
             background-color: var(--white);
@@ -93,23 +94,34 @@
             margin-right: auto;
         }
 
-        .download-button {
+          /* 重写下载按钮样式，确保更高的优先级 */
+          .button-group .download-button {
             display: inline-block;
             padding: 1rem 2rem;
-            background-color: var(--white);
-            color: var(--primary-color);
+            background-color: #ffffff;
+            color: #4CAF50;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             font-size: 1.1rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer; /* 确保显示手指图标 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
 
-        .download-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        /* 确保悬停效果有足够的优先级 */
+        .button-group .download-button:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15) !important;
+            background-color: #f8f8f8 !important;
+        }
+
+        /* 添加点击效果 */
+        .button-group .download-button:active {
+            transform: translateY(1px) !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
         }
 
         .button-group {
@@ -278,11 +290,14 @@
         <h1>YaoChaCha - 药查查</h1>
         <p class="header-description">智能药品查询助手，让用药更简单、更安全</p>
         <div class="button-group">
-            <a href="https://github.com/NachoHAF/yaochachaweb/releases/download/v1.0.0/yaochacha-release_v1.0.0.apk" class="download-button"  target="_blank">立即下载 APP</a>
+            <a href="https://github.com/NachoHAF/yaochachaweb/releases/download/v1.0.0/yaochacha-release_v1.0.0.apk" 
+            class="download-button">
+             立即下载 APP
+         </a>
             <a class="join-group-button">
                 加入用户群
                 <div class="qr-code">
-                    <img src="/api/placeholder/150/150" alt="用户群二维码">
+                    <img src="images/qr_code.jpg" alt="用户群二维码">
                 </div>
             </a>
         </div>
