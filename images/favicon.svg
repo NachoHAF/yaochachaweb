@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- 背景渐变 -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2980B9"/>
+      <stop offset="100%" style="stop-color:#1ABC9C"/>
+    </linearGradient>
+    <!-- 胶囊渐变 -->
+    <linearGradient id="pillGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF8C42"/>
+      <stop offset="100%" style="stop-color:#FF5733"/>
+    </linearGradient>
+    <!-- 放大镜渐变 -->
+    <linearGradient id="magnifierGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498DB"/>
+      <stop offset="100%" style="stop-color:#2980B9"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 主背景 -->
+  <circle cx="50" cy="50" r="45" fill="url(#bgGradient)"/>
+  
+  <!-- 装饰环 -->
+  <circle cx="50" cy="50" r="38" 
+          stroke="#FFFFFF33" 
+          stroke-width="6" 
+          fill="none"
+          stroke-dasharray="8 3"/>
+  
+  <!-- 胶囊组合 -->
+  <g transform="rotate(-30, 50, 50) translate(-8, 0)">
+    <!-- 胶囊阴影 -->
+    <path d="M35 35 
+             C35 32, 47 32, 47 35
+             L47 65
+             C47 68, 35 68, 35 65
+             Z" 
+          fill="#00000033"
+          transform="translate(2,2)"/>
+    
+    <!-- 胶囊左半部分 -->
+    <path d="M35 35
+             C35 32, 47 32, 47 35
+             L47 50
+             C47 53, 35 53, 35 50
+             Z" 
+          fill="#FF5733"/>
+    
+    <!-- 胶囊右半部分 -->
+    <path d="M35 50
+             C35 47, 47 47, 47 50
+             L47 65
+             C47 68, 35 68, 35 65
+             Z" 
+          fill="#FF8C42"/>
+    
+    <!-- 胶囊分割线 -->
+    <path d="M35 50
+             C35 47, 47 47, 47 50" 
+          stroke="#FFFFFF88" 
+          stroke-width="1.5" 
+          fill="none"/>
+    
+    <!-- 胶囊高光 -->
+    <path d="M37 37
+             C37 35, 45 35, 45 37" 
+          stroke="#FFFFFF88" 
+          stroke-width="2" 
+          fill="none"/>
+          
+    <!-- 药品标记 -->
+    <text x="41" y="53" 
+          fill="#FFFFFF" 
+          font-size="8"
+          text-anchor="middle"
+          font-family="Arial"
+          font-weight="bold">Rx</text>
+  </g>
+  
+  <!-- 放大镜 -->
+  <g transform="translate(58, 45) rotate(-30)">
+    <!-- 放大镜手柄阴影 -->
+    <rect x="15" y="-3" 
+          width="20" height="6" 
+          fill="#00000033"
+          transform="rotate(45)"
+          rx="3"/>
+    
+    <!-- 放大镜手柄 -->
+    <rect x="14" y="-4" 
+          width="20" height="6" 
+          fill="url(#magnifierGradient)"
+          transform="rotate(45)"
+          rx="3"/>
+    
+    <!-- 放大镜圈阴影 -->
+    <circle cx="0" cy="0" r="15"
+            fill="#00000033"
+            transform="translate(2,2)"/>
+    
+    <!-- 放大镜圈 -->
+    <circle cx="0" cy="0" r="15"
+            fill="url(#magnifierGradient)"
+            stroke="#FFFFFF"
+            stroke-width="2"/>
+            
+    <!-- 放大镜反光 -->
+    <path d="M-8 -8 Q-3 -3 2 -2"
+          stroke="#FFFFFF88"
+          stroke-width="2"
+          fill="none"/>
+  </g>
+  
+  <!-- 时钟刻度 -->
+  <g transform="translate(50,50)">
+    <circle cx="0" cy="0" r="35" 
+            stroke="#FFFFFF" 
+            stroke-width="2"
+            stroke-dasharray="2 13.5"
+            fill="none"/>
+  </g>
+  
+  <!-- 装饰性光点 -->
+  <circle cx="75" cy="25" r="8" fill="#FFFFFF" fill-opacity="0.3"/>
+  <circle cx="80" cy="30" r="4" fill="#FFFFFF" fill-opacity="0.2"/>
+</svg>
