@@ -6,11 +6,11 @@
     <meta name="description" content="YaoChaCha - 便捷的药品查询工具，帮助您快速找到药品信息">
     <title>YaoChaCha - 药查查</title>
     <style>
-        /* 添加二维码弹出动画 */
+        /* 修改二维码弹出动画，使用transform-origin确保从上方开始动画 */
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(-10px);
+                transform: translateY(10px);
             }
             to {
                 opacity: 1;
@@ -104,6 +104,7 @@
             font-size: 1.1rem;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            cursor: pointer; /* 确保显示手指图标 */
         }
 
         .download-button:hover {
@@ -117,6 +118,7 @@
             justify-content: center;
             align-items: center;
             margin-top: 2rem;
+            padding-bottom: 180px; /* 为二维码预留足够的空间 */
         }
 
         .join-group-button {
@@ -131,6 +133,7 @@
             box-shadow: var(--shadow);
             transition: var(--transition);
             position: relative;
+            z-index: 1;
         }
 
         .join-group-button:hover {
@@ -139,21 +142,25 @@
         }
 
         .join-group-button:hover .qr-code {
-            display: block;
-            animation: slideIn 0.3s ease-out;
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 20px);
         }
 
         .qr-code {
-            display: none;
             position: absolute;
-            top: calc(100% + 10px);
             left: 50%;
-            transform: translateX(-50%);
+            top: 100%;
+            transform: translate(-50%, 30px);
             background: var(--white);
             padding: 10px;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            z-index: 100;
+            z-index: 2;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
         }
 
         .qr-code img {
@@ -177,36 +184,6 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-        }
-
-        .screenshot-carousel {
-            margin: 4rem 0;
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .carousel {
-            overflow: hidden;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-            gap: 20px;
-            padding: 20px;
-        }
-
-        .carousel-track img {
-            width: calc(33.333% - 14px);
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .carousel-track img:hover {
-            transform: scale(1.02);
         }
 
         .features {
@@ -288,6 +265,10 @@
                 width: 100px;
                 height: 100px;
             }
+
+            .button-group {
+                padding-bottom: 200px; /* 移动端增加更多底部空间 */
+            }
         }
     </style>
 </head>
@@ -297,8 +278,8 @@
         <h1>YaoChaCha - 药查查</h1>
         <p class="header-description">智能药品查询助手，让用药更简单、更安全</p>
         <div class="button-group">
-            <a href="#download" class="download-button">立即下载 APP</a>
-            <a href="#join-group" class="join-group-button">
+            <a href="https://github.com/NachoHAF/yaochachaweb/releases/download/v1.0.0/yaochacha-release_v1.0.0.apk" class="download-button"  target="_blank">立即下载 APP</a>
+            <a class="join-group-button">
                 加入用户群
                 <div class="qr-code">
                     <img src="/api/placeholder/150/150" alt="用户群二维码">
@@ -308,17 +289,6 @@
     </header>
 
     <main>
-    <!--   <section class="screenshot-carousel">
-            <h2>应用界面展示</h2>
-            <div class="carousel">
-                <div class="carousel-track">
-                    <img src="images/Screenshot_search.jpg" alt="药品查询界面">
-                    <img src="images/Screenshot_summary.jpg" alt="AI 智能解读">
-                    <img src="images/Screenshot_reminder.jpg" alt="用药提醒">
-                </div>
-            </div>
-        </section>
---> 
         <section class="features">
             <h2>核心功能</h2>
             <div class="feature-list">
