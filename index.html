@@ -135,6 +135,8 @@
         }
 
         .join-group-button {
+            -webkit-tap-highlight-color: transparent;
+            cursor: pointer;
             display: inline-block;
             padding: 1rem 2rem;
             background-color: var(--secondary-color);
@@ -162,6 +164,8 @@
 
             /* 修改二维码容器样式 */
             .qr-code {
+            pointer-events: auto;  /* 确保二维码可以响应事件 */
+            -webkit-tap-highlight-color: transparent;
             position: absolute;
             left: 50%;
             top: 100%;
@@ -274,6 +278,14 @@
             margin-top: 4rem;
         }
 
+        @media (hover: none) and (pointer: coarse) {
+    .join-group-button:active .qr-code {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 20px);
+    }
+}
+
         @media (max-width: 768px) {
             header {
                 padding: 3rem 1rem;
@@ -351,3 +363,4 @@
 
 </body>
 </html>
+
