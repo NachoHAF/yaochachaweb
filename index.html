@@ -135,7 +135,6 @@
         }
 
         .join-group-button {
-            -webkit-tap-highlight-color: transparent;
             cursor: pointer;
             display: inline-block;
             padding: 1rem 2rem;
@@ -165,7 +164,6 @@
             /* 修改二维码容器样式 */
             .qr-code {
             pointer-events: auto;  /* 确保二维码可以响应事件 */
-            -webkit-tap-highlight-color: transparent;
             position: absolute;
             left: 50%;
             top: 100%;
@@ -181,15 +179,19 @@
             /* 移除 pointer-events: none，允许与二维码图片交互 */
         }
 
+          /* 显示二维码的状态类 */
+          .qr-code.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, 20px);
+        }
         /* 修改二维码图片样式 */
         .qr-code img {
             width: 150px;
             height: 150px;
             display: block;
             margin-bottom: 10px; /* 为提示文字留出空间 */
-            -webkit-user-select: none; /* Safari */
             user-select: none;
-            -webkit-touch-callout: none; /* iOS Safari */
         }
 
         /* 添加提示文字样式 */
@@ -361,6 +363,33 @@
         <p>© 2024 YaoChaCha. 保留所有权利.</p>
     </footer>
 
+    <script>
+        // 添加点击事件处理
+        document.addEventListener('DOMContentLoaded', function() {
+            const joinGroupButton = document.querySelector('.join-group-button');
+            const qrCode = joinGroupButton.querySelector('.qr-code');
+            let isVisible = false;
+
+            // 处理点击事件
+            joinGroupButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                isVisible = !isVisible;
+                if (isVisible) {
+                    qrCode.classList.add('show');
+                } else {
+                    qrCode.classList.remove('show');
+                }
+            });
+
+            // 点击其他区域关闭二维码
+            document.addEventListener('click', function(e) {
+                if (!joinGroupButton.contains(e.target) && isVisible) {
+                    qrCode.classList.remove('show');
+                    isVisible = false;
+                }
+            });
+        });
+    </script>
 </body>
 </html>
 
